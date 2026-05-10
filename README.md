@@ -13,7 +13,9 @@ ENDPOINTS implementados:
 
 Aportes por integrante:
 • Lautaro Tonini:
+
     - App base
+        a
     - Verificacion de base de datos
         Sí existe la base de datos
         Sí se puedo conectar
@@ -25,6 +27,7 @@ Aportes por integrante:
 
 
 • Fabrizio Rossato
+
     - Modelos:
         cliente     (client)
         vehiculo    (vehicle)
