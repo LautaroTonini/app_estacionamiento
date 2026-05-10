@@ -13,7 +13,8 @@ ENDPOINTS implementados:
 
 Aportes por integrante:
 • Lautaro Tonini
-```txt
+
+```
     - App base:
         a
     - Verificacion de base de datos:
@@ -27,7 +28,8 @@ Aportes por integrante:
 ```
 
 • Fabrizio Rossato
-```txt
+
+```
     - Modelos:
         cliente     (client)
         vehiculo    (vehicle)
