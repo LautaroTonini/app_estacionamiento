@@ -24,7 +24,7 @@ Aportes por integrante:
     - Rutas:
         cliente
         
-    - Correcion de errores / formato
+    - Correcion de errores / formatoooo
 ```
 
 • Fabrizio Rossato
