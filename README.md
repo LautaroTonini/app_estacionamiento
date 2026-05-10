@@ -4,7 +4,7 @@ Integrantes:
     Lautaro Tonini
     Fabrizio Rossato
 
-Esta app es un sistema autonomo de estacionamiento, permitiendo que los precion se autoasignen dependiendo del vehiculo, hora y tiempo estacionado
+Esta app es un sistema autonomo de estacionamiento, permitiendo que los precios se autoasignen dependiendo del vehiculo, hora y tiempo estacionado
 
 Asigna una base de datos MYSQL en su .env, nombre de usuario, contraseña, puerto (3306 por defecto), ip (127.0.0.1 LOCAL), 
 
