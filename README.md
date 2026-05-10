@@ -13,6 +13,7 @@ ENDPOINTS implementados:
 
 Aportes por integrante:
 • Lautaro Tonini:
+
     - App base
     - Verificacion de base de datos
         Sí existe la base de datos
