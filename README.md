@@ -12,6 +12,7 @@ ENDPOINTS implementados:
     -
 
 Aportes por integrante:
+
 • Lautaro Tonini:
 
     - App base
