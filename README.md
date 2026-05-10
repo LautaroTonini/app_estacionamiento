@@ -13,21 +13,23 @@ ENDPOINTS implementados:
 
 Aportes por integrante:
 • Lautaro Tonini
-
+```txt
     - App base:
+        a
     - Verificacion de base de datos:
-        Sí existe la base de datos
-        Sí se puedo conectar
+        sí existe la base de datos
+        sí se puedo conectar
 
     - Rutas:
         cliente
         
     - Correcion de errores / formato
-
+```
 
 • Fabrizio Rossato
+```txt
     - Modelos:
         cliente     (client)
         vehiculo    (vehicle)
         ubicacion   (location)
-
+```
