@@ -5,12 +5,12 @@ def obtenerVehiculo():
     vehicle = Vehicle.query.all()
     return [vehicle.serialize() for vehicle in vehicle]
 
-def registrarVehiculo(**data):
+def registrarVehiculo(data):
     nuevoVehiculo = Vehicle(**data)
     vehiculoExiste = Vehicle.query.get(nuevoVehiculo.patente)
     if vehiculoExiste:
         return "Error: La patente ya existe", 400
-    elif not vehiculoExiste:
+    if not vehiculoExiste:
         db.session.add(nuevoVehiculo)
         db.session.commit()
         return nuevoVehiculo.serialize(), 201

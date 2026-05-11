@@ -17,6 +17,7 @@ def crearCliente(data):
     db.session.add(cliente_nuevo)
     db.session.commit()
     return cliente_nuevo.serialize(), 201
+
 def borrarCliente(id):
     Cliente = Client.query.get(id)
     if Cliente:
