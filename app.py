@@ -3,6 +3,8 @@ from config.config import DATABASE_CONNECTION_URI
 from routes.client_route import client
 from routes.vehicle_route import vehicle
 from routes.location_route import location
+from routes.register_route import register
+
 from models.db import db
 from sqlalchemy.exc import OperationalError
 from sqlalchemy_utils import database_exists, create_database
@@ -12,6 +14,7 @@ app = Flask(__name__)
 app.register_blueprint(client)
 app.register_blueprint(vehicle)
 app.register_blueprint(location)
+app.register_blueprint(register)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"]= DATABASE_CONNECTION_URI
@@ -38,6 +41,8 @@ with app.app_context():
     from models.client import Client
     from models.vehicle import Vehicle
     from models.location import Location
+    from models.category import Category
+    from models.register import Register
     # db.drop_all()
     db.create_all()
 
