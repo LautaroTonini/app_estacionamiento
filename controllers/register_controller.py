@@ -31,7 +31,7 @@ def empezarRegistro(patente):
     return nuevo_registro.serialize()
 
 def terminarRegistro(patente):
-    registro = Register.query.filter_by(patente=patente,hora_egreso=None).order_by(Register.hora_ingreso.desc()).first()
+    registro = Register.query.filter_by(patente=patente,hora_egreso=None).first()
 
     if not registro:
         return {"error": "No hay un registro activo para esta patente"}, 404
