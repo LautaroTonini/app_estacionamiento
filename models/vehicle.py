@@ -5,19 +5,19 @@ class Vehicle(db.Model):
     __tablename__ = 'vehicle'
 
     patente = db.Column(db.String(45), unique=True, nullable=False, primary_key=True)
-    año_modelo = db.Column(db.String(45), nullable=False)
+    ano_modelo = db.Column(db.Integer, nullable=False)
     marca = db.Column(db.String(45), nullable=False)
-    puertas = db.Column(db.Integer, nullable=False)
+    puertas = db.Column(db.Integer, nullable=True)
     color = db.Column(db.String(45), nullable=False)
-    combustible = db.Column(db.String(45), nullable=False)
+    cabina = db.Column(db.String(45), nullable=True)
 
-    def __init__(self, ano_modelo, marca, puertas, color, patente, combustible):
+    def __init__(self, ano_modelo, marca, puertas, color, patente, cabina):
         self.patente = patente
         self.ano_modelo = ano_modelo
         self.marca = marca
         self.puertas = puertas
         self.color = color
-        self.combustible = combustible
+        self.cabina = cabina
 
     def serialize(self):
         return {
@@ -26,5 +26,5 @@ class Vehicle(db.Model):
             'marca': self.marca,
             'puertas': self.puertas,
             'color': self.color,
-            'combustible': self.combustible
+            'cabina': self.cabina,
         }    

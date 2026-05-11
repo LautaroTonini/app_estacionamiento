@@ -15,12 +15,14 @@ def obtenerEstacionamientoPorId(num_espacio):
 def obtenerEstacionamientoVacio():
     location = Location.query.filter_by(ocupado=False).all()
     if location:
-        return [location.serialize() for location in location]
+        return [location.num_espacio for location in location]
     else:
         return None
 
-def ocuparEstacionamiento(num_espacio):
-    location = Location.query.get(num_espacio)
+def ocuparEstacionamiento(data):
+    Location_patente = data.get('patente')
+    location_num = data.get('num_espacio')
+    location = Location.query.get(location_num)
     if not location:
         return ("error: Estacionamiento no encontrado"), 404
     if location.ocupado:
