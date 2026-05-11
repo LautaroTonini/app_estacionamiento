@@ -1,72 +1,151 @@
-EstacionaMAX
+# EstacionaMAX
 
-Integrantes:
- • Lautaro Tonini
- • Fabrizio Rossato
- 
+Sistema autónomo de estacionamiento que permite realizar cobros automáticos en base al tiempo de permanencia y al tipo de vehículo.
 
-Esta app es un sistema autonomo de estacionamiento, que permite un cobro automatico en base al tiempo de estacionamiento yal tipo de vehiculo ,El sistema permite gestionar vehiculos,cliente y etacionamientos
+El sistema permite gestionar:
 
-configuraciondel .env:
-MYSQL_USER = (nombre de usuario)
-MYSQL_PASSWORD = (contraseña)
-MYSQL_HOST = 127.0.0.1
-MYSQL_PORT = 330
-MYSQL_DATABASE = (nombre de la DataBase)
+* Vehículos
+* Clientes
+* Estacionamientos
+* Categorías
+* Registros de ingreso y salida
 
-Ejecucion del Proyecto
+---
 
-1.Clonar repositorio
-    git clone https://github.com/LautaroTonini/app_estacionamiento
-2.Ingresar al repositorio
-    cd app_estacionamiento
-3.Instalar dependencias
-    pip install -r requirements.txt
-4.Ejecutar
-    python app.py
+# Integrantes
 
-ENDPOINTS implementados:
-    -Category: 
-     •GET /api/categories (obtener todas las categorias)
-     •GET /api/categories/<nombre> (obtener categorias por nombre)
-     •GET /api/categories/add (agregar categoria)
-     •DELETE /api/categories/delete/<categoria> (Eliminar categoria)
-    -Clients:
-     •GET /api/clients (Obtener todos los clientes)
-     •GET /api/clients/<id> (Obtener cliente por id)
-     •GET /api/clients/add (agregar Cliente)
-     •DELETE /api/clients/delete/<id> (Eliminar cliente)
-     -Vehiculos:
-     •GET /api/vehicles (Obtener todos los vehículos)
-     •GET/api/vehicles/create (agregar vehículo)
-     -localizacion:
-     •GET /api/locations (Obtener todos los estacionamientos)
-     •GET /api/locations/<num_espacio> (Obtener un estacionamiento por número)
-    -registros
-     •GET /api/registers/create/<patente> (Crear un registro de ingreso utilizando patente)
-     •PUT /api/registers/finish/<patente> (Finalizar un registro de ingreso)
+* Fabrizio Rossato
+* Lautaro Tonini
 
-Aportes por integrante:
+---
 
-• Lautaro Tonini:
-    Rama utilizada:Feature/LautaroTonini
-    - App base
-    - Verificacion de base de datos
-    - Gestion y coneccion a Base de datos
-    - routes y controllers
-        comision    (comision)
-        registro    (register)
-    - Correcion de errores / formato
-    
-• Fabrizio Rossato
-    Rama utilizada:Feature/FabrizioRossato
-    - App base
-    -edicion READMI:md
-    - Modelos,routes y controllers
-        cliente     (client)
-        vehiculo    (vehicle)
-        ubicacion   (location)
-        comision    (comision)
-        registro    (register)
-        categoria   (category)
+# Configuración del archivo `.env`
 
+```env
+MYSQL_USER=nombre_de_usuario
+MYSQL_PASSWORD=contraseña
+MYSQL_HOST=127.0.0.1
+MYSQL_PORT=3306
+MYSQL_DATABASE=nombre_de_la_base_de_datos
+```
+
+---
+
+# Ejecución del proyecto
+
+## 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/LautaroTonini/app_estacionamiento
+```
+
+## 2. Ingresar al directorio del proyecto
+
+```bash
+cd app_estacionamiento
+```
+
+## 3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+## 4. Ejecutar la aplicación
+
+```bash
+python app.py
+```
+
+---
+
+# Endpoints implementados
+
+## Categorías
+
+* `GET /api/categories` → Obtener todas las categorías
+* `GET /api/categories/<nombre>` → Obtener categoría por nombre
+* `POST /api/categories/add` → Agregar categoría
+* `DELETE /api/categories/delete/<categoria>` → Eliminar categoría
+
+---
+
+## Clientes
+
+* `GET /api/clients` → Obtener todos los clientes
+* `GET /api/clients/<id>` → Obtener cliente por ID
+* `POST /api/clients/add` → Agregar cliente
+* `DELETE /api/clients/delete/<id>` → Eliminar cliente
+
+---
+
+## Vehículos
+
+* `GET /api/vehicles` → Obtener todos los vehículos
+* `POST /api/vehicles/create` → Agregar vehículo
+
+---
+
+## Localización / Estacionamientos
+
+* `GET /api/locations` → Obtener todos los estacionamientos
+* `GET /api/locations/<num_espacio>` → Obtener estacionamiento por número
+* `GET /api/locations/empty` → Obtener un estacionamiento vacío
+* `POST /api/locations/occupy/<num_espacio>` → Ocupar estacionamiento
+* `POST /api/locations/vacate/<num_espacio>` → Desocupar estacionamiento
+
+---
+
+## Registros
+
+* `POST /api/registers/create/<patente>` → Crear registro de ingreso
+* `PUT /api/registers/finish/<patente>` → Finalizar registro de ingreso
+
+---
+
+# Aportes por integrante
+
+## Lautaro Tonini
+
+**Rama utilizada:** `Feature/LautaroTonini`
+
+### Aportes
+
+* App base
+* Verificación de base de datos
+* Gestión y conexión a base de datos
+* Corrección de errores y formato
+* Routes y controllers:
+
+  * Comisión (`comision`)
+  * Registro (`register`)
+
+---
+
+## Fabrizio Rossato
+
+**Rama utilizada:** `Feature/FabrizioRossato`
+
+### Aportes
+
+* App base
+* Edición del README
+* Modelos, routes y controllers:
+
+  * Cliente (`client`)
+  * Vehículo (`vehicle`)
+  * Ubicación (`location`)
+  * Comisión (`comision`)
+  * Registro (`register`)
+  * Categoría (`category`)
+
+---
+
+# Tecnologías utilizadas
+
+* Flask
+* SQLAlchemy
+* MySQL
+* Postman
+* Git
+* GitHub
