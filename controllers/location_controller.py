@@ -3,21 +3,21 @@ from models.db import db
 
 def obtenerEstacionamientos():
     locations = Location.query.all()
-    return [location.serialize() for location in locations]
+    return [location.serialize() for location in locations], 200
 
 def obtenerEstacionamientoPorId(num_espacio):
     location = Location.query.get(num_espacio)
     if location:
-        return location.serialize()
+        return location.serialize(), 200
     else:
-        return None
+        return "Estacionamiento no encontrado", 404
 
 def obtenerEstacionamientoVacio():
     location = Location.query.filter_by(ocupado=False).all()
     if location:
-        return [location.serialize() for location in location]
+        return [location.serialize() for location in location], 200
     else:
-        return None
+        return "No hay estacionamientos vacios", 404
 
 def ocuparEstacionamiento(num_espacio):
     location = Location.query.get(num_espacio)

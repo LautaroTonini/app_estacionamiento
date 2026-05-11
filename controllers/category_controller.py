@@ -1,27 +1,35 @@
-from models.vehicle import Vehicle
+from models.category import Category
+from models.client import Client
 from models.db import db
 
-def obtenerVehiculo():
-    vehicle = Vehicle.query.all()
-    return [vehicle.serialize() for vehicle in vehicle]
+def obtenerCategorias():
+    categories = Category.query.all()
+    return [category.serialize() for category in categories]
 
-def registrarVehiculo(data):
-    nuevoVehiculo = Vehicle(**data)
-    vehiculoExiste = Vehicle.query.get(nuevoVehiculo.patente)
-    if vehiculoExiste:
-        return "Error: La patente ya existe", 400
-    if not vehiculoExiste:
-        db.session.add(nuevoVehiculo)
-        db.session.commit()
-        return nuevoVehiculo.serialize(), 201
+def obtenerCategoriaPorNombre(categoria):
+    category = Category.query.get(categoria)
+    if category:
+        return category.serialize()
     else:
-        return "Error inesperado", 500
+        return "Categoria no encontrada", 404 
     
-def borrarvehiculo(patente):
-    vehicle = Vehicle.query.get(patente)
-    if vehicle:
-        db.session.delete(vehicle)
-        db.session.commit()
-        return "", 204
-    else:
-        return "Patente no encontrada", 404
+def crearCategoria(data):
+    categoriaExiste = Category.query.get(data['categoria'])
+    if categoriaExiste:
+        return "Error: La categoría ya existe", 400
+    categoria_nueva = Category(**data)
+    db.session.add(categoria_nueva)
+    db.session.commit()
+    return categoria_nueva.serialize(), 201
+
+def borrarCategoria(nombre):
+    categoria = Category.query.get(nombre)
+
+    if not categoria:
+        return {"error": "Categoria no encontrada"}, 404
+
+    db.session.delete(categoria)
+
+    db.session.commit()
+
+    return '', 204

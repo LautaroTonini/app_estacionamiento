@@ -9,7 +9,7 @@ def asignarCategoria(patente):
     vehiculo = Vehicle.query.get(patente)
     if not vehiculo:
         return None
-    if vehiculo.cabina or vehiculo.puertas is not None:
+    if vehiculo.cabina == 0 or vehiculo.puertas is None:
         return "camioneta"
     elif vehiculo.puertas == 0 or vehiculo.puertas is None:
         return "moto"

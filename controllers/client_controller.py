@@ -13,6 +13,9 @@ def obtenerClientePorId(id):
         return None 
     
 def crearCliente(data):
+    clienteExiste = Client.query.filter_by(email=data["email"]).first()
+    if clienteExiste:
+        return "Error: El cliente ya existe", 400
     cliente_nuevo = Client(**data)
     db.session.add(cliente_nuevo)
     db.session.commit()
@@ -25,4 +28,4 @@ def borrarCliente(id):
         db.session.commit()
         return '', 204
     else:
-        return None, 404
+        return "Cliente no encontrado", 404
