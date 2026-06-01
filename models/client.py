@@ -4,9 +4,9 @@ class Client(db.Model):
     __tablename__ = 'clients'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(45), nullable=False)
+    name = db.Column(db.String(45), unique=False, nullable=False)
     email = db.Column(db.String(45), unique=True, nullable=False)
-    phone = db.Column(db.String(45), unique=True, nullable=False)
+    phone = db.Column(db.String(45), unique=False, nullable=False)
 
     def __init__(self, name, email, phone):
         self.name = name

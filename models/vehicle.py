@@ -27,4 +27,4 @@ class Vehicle(db.Model):
             'puertas': self.puertas,
             'color': self.color,
             'cabina': self.cabina,
-        }    
+        }

@@ -1,8 +1,13 @@
-from flask import Flask
+from unicodedata import category
+
+from flask import Flask, render_template
 from config.config import DATABASE_CONNECTION_URI
 from routes.client_route import client
 from routes.vehicle_route import vehicle
 from routes.location_route import location
+from routes.register_route import register
+from routes.category_routes import category
+
 from models.db import db
 from sqlalchemy.exc import OperationalError
 from sqlalchemy_utils import database_exists, create_database
@@ -12,6 +17,8 @@ app = Flask(__name__)
 app.register_blueprint(client)
 app.register_blueprint(vehicle)
 app.register_blueprint(location)
+app.register_blueprint(register)
+app.register_blueprint(category)
 
 
 app.config["SQLALCHEMY_DATABASE_URI"]= DATABASE_CONNECTION_URI
@@ -34,10 +41,29 @@ db.init_app(app)
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/home')
+def home():
+    nombre = "Usuario"
+    return render_template("index.html", nombre=nombre)
+
+@app.route('/users')
+def users():
+    lista_usuarios = ["ana", "juan", "maria", "pedro"]
+    return render_template("users.html", list_users = lista_usuarios)
+
+@app.route('/admin')
+def admin():
+    es_admin = True
+    
+    return render_template("admin.html", es_admin=es_admin)
+
 with app.app_context():
     from models.client import Client
     from models.vehicle import Vehicle
     from models.location import Location
+    from models.category import Category
+    from models.register import Register
+    from models.category import Category
     # db.drop_all()
     db.create_all()
 

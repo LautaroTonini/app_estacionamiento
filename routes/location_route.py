@@ -12,19 +12,14 @@ def get_locations():
 
 @location.route('/api/locations/<int:num_espacio>')
 def get_location(num_espacio):
-    location = obtenerEstacionamientoPorId(num_espacio)
-    if location:
-        return jsonify(location)
-    else:
-        return jsonify({'error': 'Location not found'}), 404
+    location, status_code = obtenerEstacionamientoPorId(num_espacio)
+    return jsonify(location), status_code
+
     
 @location.route('/api/locations/empty')
-def get_empty_locations():
-    locations = obtenerEstacionamientoVacio()
-    if locations:
-        return jsonify(locations), 200
-    else:
-        return jsonify({'error': 'No empty locations available'}), 404
+def get_empty_location():
+    location, status_code = obtenerEstacionamientoVacio()
+    return jsonify(location), status_code
 
 @location.route('/api/locations/occupy', methods=['POST'])
 def occupy_location(data):

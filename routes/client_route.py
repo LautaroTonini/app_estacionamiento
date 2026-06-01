@@ -18,16 +18,14 @@ def get_client(id):
     else:
         return jsonify({'error': 'Client not found'}), 404
 
-@client.route('/api/clients', methods=['POST'])
+@client.route('/api/clients/add', methods=['POST'])
 def create_client():
     data = request.get_json()
     client, status_code = crearCliente(data)
     return jsonify(client), status_code
 
-@client.route('/api/clients/<int:id>', methods=['DELETE'])
+@client.route('/api/clients/delete/<int:id>', methods=['DELETE'])
 def delete_client(id):
     client, status_code = borrarCliente(id)
-    if client:
-        return jsonify(client), status_code
-    else:
-        return jsonify({'error': 'Client not found'}), 404
+    return jsonify(client), status_code
+
